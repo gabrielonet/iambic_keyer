@@ -1,5 +1,6 @@
 int ledPin = 13;   // LED connected to digital pin 13
-int ptt = 12 ;     // PTT output
+int key = 12 ;      // key output
+int ptt = 11 ;     // PTT output
 int dahPin = 7;    // DAH  digital input pin 7
 int ditPin = 6;    // DIT digital input 6
 int spd = 300 ;    // keyer WPM speed
@@ -17,8 +18,10 @@ void setup()
   pinMode(dahPin, INPUT_PULLUP);        // sets the digital pin 7 as input and internal resistor to HIGH
   pinMode(ditPin, INPUT_PULLUP);        // sets the digital pin 6 as input and internal resistor to HIGH 
   pinMode(ptt, OUTPUT) ;
+  pinMode(key, OUTPUT);
   digitalWrite(ptt, HIGH);
-   Serial.begin(115200);
+  digitalWrite(key, HIGH);
+  Serial.begin(115200);
 }
 
 
@@ -32,10 +35,12 @@ void loop()
   if (dah == LOW) {
     previousMillis = millis();
     digitalWrite(ptt, LOW);
+    digitalWrite(key, LOW);
     digitalWrite(ledPin, HIGH);
     analogWrite(3,127);
     delay(spd);
     digitalWrite(ledPin, LOW);
+    digitalWrite(key,HIGH);
     analogWrite(3,0);
     delay(spd/3)  ;
   }
@@ -43,10 +48,12 @@ void loop()
   if (dit == LOW) { 
     previousMillis = millis();
     digitalWrite(ptt, LOW);
+    digitalWrite(key,LOW);
     digitalWrite(ledPin, HIGH);
     analogWrite(3,127);
     delay(spd/3);
     digitalWrite(ledPin, LOW);
+    digitalWrite(key,HIGH);
     analogWrite(3,0);
     delay(spd/3)  ;
     
