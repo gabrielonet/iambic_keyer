@@ -1,3 +1,6 @@
+// My transceiver main controller needs 2 PTT signals, PTT input for Break in controll and a classic PTT for conventional mode.
+// I have to rebuild code to include classic PTT .. TODO
+
 int ledPin = 13;   // LED connected to digital pin 13
 int key_in = 12;     // Straight Key input pin 12
 int straight = 0 ; // straight key temp variable
