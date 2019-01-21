@@ -9,13 +9,13 @@ int dahPin = 10;    // DAH  digital input pin 10
 int ditPin = 9;    // DIT digital input 9
 int ptt_out = 8 ;     // PTT output pin 8
 int key_out = 7 ;     // key output pin 7
-int ptt_out_clasic = 6 // Standard PTT output pin 6 
+int ptt_out_clasic = 6; // Standard PTT output pin 6 
 int piezoPin = 5;  //  8 ohm speaker  with 330 ohm in series pin 5
 int spd = 300 ;    // keyer WPM speed
 int dah = 1 ;
 int dit = 1 ;
 int val = 0;     // variable for reading straight key
-int val2 = 0 // variable for PTT reading
+int val2 = 0 ; // variable for PTT reading
 int analogPin = A7;     // potentiometer connected to analog pin A7 , ground and 3.3V (arduino Due !!! other boards  may accept 5 V but be carefull)
 unsigned long previousMillis = millis();
 unsigned long currentMillis = millis();
@@ -30,7 +30,7 @@ void setup()
   pinMode(key_in, INPUT_PULLUP);  
   digitalWrite(ptt_out, HIGH);
   digitalWrite(key_out, HIGH);
-  pinMode(ptt_out_clasic, HIGH)
+  pinMode(ptt_out_clasic, HIGH);
 }
 
 void loop()
@@ -42,7 +42,7 @@ void loop()
     
   // Begin manual PTT
   val2 = digitalRead(ptt_in);     // read the PTT switch
-  digitalWrite(ptt_out_classic, val2);
+  digitalWrite(ptt_out_clasic, val2);
   // END manual PTT
   
   // Begin straight key 
