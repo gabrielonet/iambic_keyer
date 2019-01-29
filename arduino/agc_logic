@@ -1,0 +1,35 @@
+int analogPin_in = A3;    
+int analogPin_out = A4; 
+int val = 0 ;     
+int last_val = 0 ;
+
+int now = 0; 
+int alpha = 0 ; 
+int delta = 0 ;
+
+void setup()
+{
+  Serial.begin(9600);              //  setup serial
+}
+
+void loop()
+{
+val = analogRead(analogPin_in);     // read the input pin
+if ( val > last_val)
+    {
+      alpha = millis() ;
+      analogWrite(analogPin_out, val/4); 
+      last_val = val;
+      Serial.println(last_val);
+    }
+ 
+delta = millis() - alpha ;
+
+if ( val < last_val && delta > 3000 )
+    {
+      analogWrite(analogPin_out, val/4); 
+      last_val = val;
+      //Serial.println(last_val);
+    }
+
+}
